@@ -14,3 +14,6 @@ class CY(models.Model):
     first = models.CharField(max_length=24)
     last = models.CharField(max_length=24)
 
+    def __unicode__(self):
+        return u'%s  %s  ' % (self.id, self.name)
+

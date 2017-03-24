@@ -1,0 +1,76 @@
+DEBUG 2017-03-24 15:27:24,341 views 26740 17932 this is for test
+DEBUG 2017-03-24 15:27:57,494 views 26740 19620 this is for test
+DEBUG 2017-03-24 15:28:28,196 views 26740 13768 this is for test
+DEBUG 2017-03-24 15:30:57,838 views 2552 7560 this is for test
+DEBUG 2017-03-24 15:31:55,207 views 27288 17832 this is for test
+DEBUG 2017-03-24 15:32:17,467 views 13856 8344 this is for test
+DEBUG 2017-03-24 15:33:26,378 views 3968 12532 this is for test x
+DEBUG 2017-03-24 15:38:03,783 views 15112 15228 this is for test x
+DEBUG 2017-03-24 15:39:36,865 views 20248 14008 this is for test x
+DEBUG 2017-03-24 15:39:39,302 views 20248 13856 this is for test x
+DEBUG 2017-03-24 15:40:00,875 views 26356 25864 this is for test x
+DEBUG 2017-03-24 15:40:04,901 views 26356 24436 this is for test x
+DEBUG 2017-03-24 15:40:07,592 views 26356 11548 this is for test x
+DEBUG 2017-03-24 15:40:09,384 views 26356 25292 this is for test x
+DEBUG 2017-03-24 15:40:11,765 views 26356 23584 this is for test x
+DEBUG 2017-03-24 15:40:33,786 views 26356 7548 this is for test x
+DEBUG 2017-03-24 15:40:40,420 views 26356 27028 this is for test x
+DEBUG 2017-03-24 15:40:42,114 views 26356 26832 this is for test x
+DEBUG 2017-03-24 15:40:43,982 views 26356 27320 this is for test x
+DEBUG 2017-03-24 15:40:46,447 views 26356 19380 this is for test x
+DEBUG 2017-03-24 15:40:47,545 views 26356 24448 this is for test x
+DEBUG 2017-03-24 15:41:07,990 views 13464 19884 this is for test x
+DEBUG 2017-03-24 15:41:09,109 views 13464 17220 this is for test x
+DEBUG 2017-03-24 15:41:09,997 views 13464 12464 this is for test x
+DEBUG 2017-03-24 15:43:25,390 views 10584 15336 this is for test x
+DEBUG 2017-03-24 15:43:26,684 views 10584 16268 this is for test x
+DEBUG 2017-03-24 15:43:54,756 views 27520 26180 this is for test x
+DEBUG 2017-03-24 15:43:55,799 views 27520 12516 this is for test x
+DEBUG 2017-03-24 15:44:13,789 views 7856 23276 this is for test x
+DEBUG 2017-03-24 15:44:15,385 views 7856 13416 this is for test x
+DEBUG 2017-03-24 15:47:44,951 views 22084 13324 this is for test x
+DEBUG 2017-03-24 15:48:04,134 views 16836 12208 this is for test x
+DEBUG 2017-03-24 16:38:17,322 views 3116 10252 the query key words is -> 正则
+DEBUG 2017-03-24 16:41:38,891 views 3116 24948 the query key words is -> 哈哈/哈哈
+DEBUG 2017-03-24 16:43:59,730 views 17108 24920 the query key words is -> 哈哈/哈哈
+DEBUG 2017-03-24 16:44:04,572 views 17108 14236 the query key words is -> 正则
+DEBUG 2017-03-24 16:45:28,329 views 19192 24784 the query key words is -> 哈哈
+DEBUG 2017-03-24 16:47:22,460 views 26940 15032 the query key words is -> 哈哈 , 哈哈
+DEBUG 2017-03-24 16:47:28,184 views 26940 16836 the query key words is -> 哈哈&nbsp; , 呵呵<br>
+DEBUG 2017-03-24 16:47:41,431 views 26940 18112 the query key words is -> 哈哈 , 呵呵<br>
+DEBUG 2017-03-24 16:48:25,259 views 26940 26376 the query key words is -> 一个 , 两个<br>
+DEBUG 2017-03-24 16:49:54,714 views 26940 12572 the query key words is -> y , e<br>
+DEBUG 2017-03-24 16:51:34,296 views 26940 27412 the query key words is -> 一 , 二
+DEBUG 2017-03-24 16:51:47,286 views 26940 26120 the query key words is -> 一哥&nbsp; , 个<br>
+DEBUG 2017-03-24 16:55:54,891 views 26940 24712 the query key words is -> 一哥&nbsp; , 李庚
+DEBUG 2017-03-24 16:56:29,459 views 26940 8788 the query key words is -> 一哥&nbsp; , 李庚
+DEBUG 2017-03-24 17:01:29,655 views 26940 15824 the query key words is -> 中文/&nbsp; , 中文
+DEBUG 2017-03-24 17:08:09,473 views 26940 21296 the query key words is -> &nbsp;/&nbsp;/中文/&nbsp;&nbsp; , 还是中文
+DEBUG 2017-03-24 17:09:55,046 views 26940 23732 the query key words is -> 中文 , 中文
+DEBUG 2017-03-24 17:11:47,789 views 23692 26344 the query key words is -> 中文
+DEBUG 2017-03-24 17:23:26,724 views 4620 20620 the query key words is -> xx<br>
+DEBUG 2017-03-24 17:23:58,483 views 4620 8512 the query key words is -> xxx
+DEBUG 2017-03-24 17:25:07,335 views 6480 25168 the query key words is -> xxx
+DEBUG 2017-03-24 17:25:48,776 views 6480 28212 the query key words is -> xxx
+DEBUG 2017-03-24 17:26:04,710 views 28536 28656 the query key words is -> xxx
+DEBUG 2017-03-24 17:26:04,717 views 28536 28656 the query result -> 鞭辟近里
+DEBUG 2017-03-24 17:26:25,961 views 28480 28648 the query key words is -> xxx
+DEBUG 2017-03-24 17:26:51,121 views 28580 28148 the query key words is -> xxx
+DEBUG 2017-03-24 17:26:51,125 views 28580 28148 the query result -> 10  鞭辟近里  
+DEBUG 2017-03-24 17:29:01,492 views 26576 28224 the query key words is -> 李<br>
+DEBUG 2017-03-24 17:29:01,493 views 26576 28224 the query result -> <QuerySet []>
+DEBUG 2017-03-24 17:30:38,535 views 26576 27784 the query key words is -> 李
+DEBUG 2017-03-24 17:30:49,625 views 26576 27996 the query key words is -> 李
+DEBUG 2017-03-24 17:30:52,869 views 26576 1156 the query key words is -> 李/
+DEBUG 2017-03-24 17:30:52,871 views 26576 1156 the query result -> <QuerySet []>
+DEBUG 2017-03-24 17:33:01,678 views 26576 26884 the query key words is -> 李
+DEBUG 2017-03-24 17:33:05,756 views 26576 10396 the query key words is -> 李
+DEBUG 2017-03-24 17:33:42,325 views 28240 28412 the query key words is -> 李
+DEBUG 2017-03-24 17:34:09,944 views 10612 26748 the query key words is -> 李
+DEBUG 2017-03-24 17:46:40,983 views 14944 20900 the query key words is -> 李
+DEBUG 2017-03-24 17:46:47,081 views 14944 7100 the query key words is -> 李
+DEBUG 2017-03-24 17:48:15,243 views 14944 19716 the query key words is -> 李
+DEBUG 2017-03-24 17:48:27,667 views 23464 7988 the query key words is -> 李
+DEBUG 2017-03-24 17:51:30,993 views 11492 22312 the query key words is -> 李
+DEBUG 2017-03-24 17:52:06,138 views 16268 15448 the query key words is -> 李
+DEBUG 2017-03-24 17:57:38,411 views 16268 26604 the query key words is -> 李

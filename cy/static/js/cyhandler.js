@@ -15,8 +15,8 @@ function commandHandler(command)
 		data:{},
 		dataType:"json",
 		success:function(data){
-			console.log("get success -> " + data);
-			result = data.name
+			handleQueryResult(data);
+			result = "success"
 		},
 		error:function(data){
 			console.log("get error -> " + data);
@@ -35,4 +35,11 @@ function splitCommand(command)
 		return "/"+commandArr.join("/")+"/";
 	}
 	return command.trim();
+}
+
+function handleQueryResult(data)
+{
+    $.each(data, function(name, value){
+        console.log(name + " -> " + value);
+    });
 }

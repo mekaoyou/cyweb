@@ -152,7 +152,7 @@ LOGGING = {
         'file_handler': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'E:\pyworkspace\cyweb\logs\cylogs.log',
+            'filename': 'G:\pyWorkspace\cyweb\logs\cylogs.log',
             'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 5,
             'formatter': 'verbose',

@@ -20,5 +20,6 @@ from cy import views as cy
 urlpatterns = [
     url(r'^$', cy.index),
     url(r'^query/(?P<keywords>.+)/$', cy.query),
+    url(r'^detail/(\d+)/$', cy.detail),
     url(r'^admin/', admin.site.urls),
 ]

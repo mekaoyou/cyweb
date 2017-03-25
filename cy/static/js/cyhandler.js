@@ -70,7 +70,7 @@ function handleQueryResult(json)
     cyList_html += "<br>共检索到 " + json.length + " 条记录";
     if(json.length > 0)
     {
-    	cyList_html += "<br>你可以使用 detail <成语ID> 命令查看成语详情";
+    	cyList_html += '<br>tips:你可以使用 "detail <成语ID or 成语名>" 命令查看成语详情';
     }
     return cyList_html;
 }

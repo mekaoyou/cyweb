@@ -28,5 +28,11 @@ def detail(request, cyId):
     return JsonResponse(serializers.serialize("json", cy), safe=False)
 
 
+def detailII(request, cyName):
+    log.debug(u'the query id is -> %s', cyName)
+    cy = CY.objects.filter(name=cyName)
+    return JsonResponse(serializers.serialize("json", cy), safe=False)
+
+
 
 

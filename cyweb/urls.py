@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^$', cy.index),
     url(r'^query/(?P<keywords>.+)/$', cy.query),
     url(r'^detail/(\d+)/$', cy.detail),
+    url(r'^detail/([^ -~]+)/$', cy.detailII),
     url(r'^admin/', admin.site.urls),
 ]

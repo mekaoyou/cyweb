@@ -19,8 +19,20 @@ def index(request):
 def query(request, keywords):
     log.debug(u'the query key words is -> %s', keywords)
     cys = CY.objects.filter(name__contains=keywords)
-    # log.debug(u'the query result -> %s', cys)
-    return JsonResponse(serializers.serialize("json", cys))
+    return JsonResponse(serializers.serialize("json", cys), safe=False)
+
+
+def detail(request, cyId):
+    log.debug(u'the query id is -> %d', int(cyId))
+    cy = CY.objects.filter(id=int(cyId))
+    return JsonResponse(serializers.serialize("json", cy), safe=False)
+
+
+def detailII(request, cyName):
+    log.debug(u'the query id is -> %s', cyName)
+    cy = CY.objects.filter(name=cyName)
+    return JsonResponse(serializers.serialize("json", cy), safe=False)
+
 
 
 

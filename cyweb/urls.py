@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """cyweb URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,6 +19,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from cy import views as cy
+
+admin.site.site_header = u'Blog管理'
+admin.site.site_title = u'Blog管理'
 
 urlpatterns = [
     url(r'^$', cy.index),

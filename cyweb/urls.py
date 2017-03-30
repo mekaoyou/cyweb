@@ -34,5 +34,5 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^uploadimg/', cy.uploadImage),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT, }),
-    url(r'^media/article_images/(?P<path>.*)$', serve, {'document_root': settings.BASE_DIR + '/media/article_images'}),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),
 ]

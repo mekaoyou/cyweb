@@ -124,6 +124,7 @@ CKEDITOR_UPLOAD_PATH = "article_images"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = 'E:/pyworkspace/cyweb/static'
 
 CKEDITOR_MEDIA_PREFIX = "/site_media/media/ckeditor/"
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "site_media", "media/uploads").replace("\\", '/')
@@ -143,7 +144,7 @@ CKEDITOR_CONFIGS = {
             ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
             ['Styles', 'Format', 'Font', 'FontSize'],
             ['TextColor', 'BGColor'],
-            ['Maximize', 'ShowBlocks', '-', 'About',  'pbckcode'],
+            ['Maximize', 'ShowBlocks', '-', 'About'],
             ),
         'language': 'zh-cn',
     }

@@ -17,8 +17,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib import admin
 from cy import views as cy
+from django.views.static import serve
 
 admin.site.site_header = u'Blog管理'
 admin.site.site_title = u'Blog管理'
@@ -30,4 +32,7 @@ urlpatterns = [
     url(r'^detail/([^ -~]+)/$', cy.detailII),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^uploadimg/', cy.uploadImage),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT, }),
+    url(r'^media/article_images/(?P<path>.*)$', serve, {'document_root': settings.BASE_DIR + '/media/article_images'}),
 ]

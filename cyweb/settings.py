@@ -125,10 +125,14 @@ CKEDITOR_UPLOAD_PATH = "article_images"
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+CKEDITOR_MEDIA_PREFIX = "/site_media/media/ckeditor/"
+CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "site_media", "media/uploads").replace("\\", '/')
+CKEDITOR_UPLOAD_PREFIX = os.path.join(BASE_DIR, "/site_media/media/uploads").replace("/", "\\")
+
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': (
-            ['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
+            ['div', 'Source', '-', 'Save', 'Preview', '-', 'Templates'],
             ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
             ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
             ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button',  'ImageButton', 'HiddenField'],
@@ -174,14 +178,14 @@ LOGGING = {
             'class': 'django.utils.log.AdminEmailHandler',
             # 'filters': ['special']
         },
-        # 'file_handler': {
-        #     'level': 'DEBUG',
-        #     'class': 'logging.handlers.RotatingFileHandler',
-        #     'filename': 'G:\pyWorkspace\cyweb\logs\cylogs.log',
-        #     'maxBytes': 1024*1024*5,  # 5 MB
-        #     'backupCount': 5,
-        #     'formatter': 'verbose',
-        # },
+        'file_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, "/logs/cylogs.log"),
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'verbose',
+        },
     },
     'loggers': {
         'django': {
@@ -195,7 +199,7 @@ LOGGING = {
             'propagate': True,
         },
         'cy.app': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file_handler'],
             'level': 'DEBUG',
             'propagate': True,
         },

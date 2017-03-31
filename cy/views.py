@@ -4,7 +4,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse, Http404
 import logging
-from models import CY
+from models import CY, Category, Article, WellCome
 from django.core import serializers
 import time
 
@@ -14,7 +14,13 @@ log = logging.getLogger('cy.app')
 
 
 def index(request):
-    return render(request, 'cy/index.html')
+    well = WellCome.objects.get(id=1)
+    return render(request, 'cy/index.html', {'SHELL': well.shell, 'TITLE': well.title})
+
+
+def wellcome(request):
+    well = WellCome.objects.all()
+    return JsonResponse(serializers.serialize("json", well), safe=False)
 
 
 def query(request, keywords):
@@ -55,6 +61,31 @@ def uploadImage(request):
         raise Http404()
 
 
+def category(request):
+    log.debug(u'the category enter')
+    cats = Category.objects.all()
+    return JsonResponse(serializers.serialize("json", cats), safe=False)
 
 
+def blogs(request, cat_id):
+    log.debug(u'blogs enter and cat id is %s', cat_id)
+    blogs = Article.objects.filter(category=int(cat_id))
+    return JsonResponse(serializers.serialize("json", blogs), safe=False)
 
+
+def artList(request):
+    log.debug(u'the artList enter')
+    arts = Article.objects.all()
+    return JsonResponse(serializers.serialize("json", arts), safe=False)
+
+
+def art(request, art_id):
+    log.debug(u'the art enter id is %s', art_id)
+    arts = Article.objects.filter(id=int(art_id))
+    return JsonResponse(serializers.serialize("json", arts, use_natural_foreign_keys=True), safe=False)
+
+
+def artQuery(request, keywords):
+    log.debug(u'the artQuery keywords is %s', keywords)
+    arts = Article.objects.filter(title__contains=keywords)
+    return JsonResponse(serializers.serialize("json", arts, use_natural_foreign_keys=True), safe=False)

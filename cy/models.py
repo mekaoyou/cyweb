@@ -73,8 +73,8 @@ class Article(models.Model):
         verbose_name_plural = u'博文'
 
 
-class WellCome(models.Model):
-    wellcome = RichTextField(verbose_name=u'欢迎语')
+class Welcome(models.Model):
+    welcome = RichTextField(verbose_name=u'欢迎语')
     shell = models.CharField(max_length=32, verbose_name=u'等待输入')
     title = models.CharField(max_length=32, verbose_name=u'网站标题', null=True)
 

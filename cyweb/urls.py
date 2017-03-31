@@ -27,7 +27,7 @@ admin.site.site_title = u'Blog管理'
 
 urlpatterns = [
     url(r'^$', cy.index),
-    url(r'^wellcome/', cy.wellcome),
+    url(r'^welcome/', cy.welcome),
     url(r'^query/(?P<keywords>.+)/$', cy.query),
     url(r'^detail/(\d+)/$', cy.detail),
     url(r'^detail/([^ -~]+)/$', cy.detailII),

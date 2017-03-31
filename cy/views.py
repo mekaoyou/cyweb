@@ -4,7 +4,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse, Http404
 import logging
-from models import CY, Category, Article, WellCome
+from models import CY, Category, Article, Welcome
 from django.core import serializers
 import time
 
@@ -14,12 +14,12 @@ log = logging.getLogger('cy.app')
 
 
 def index(request):
-    well = WellCome.objects.get(id=1)
+    well = Welcome.objects.get(id=1)
     return render(request, 'cy/index.html', {'SHELL': well.shell, 'TITLE': well.title})
 
 
-def wellcome(request):
-    well = WellCome.objects.all()
+def welcome(request):
+    well = Welcome.objects.all()
     return JsonResponse(serializers.serialize("json", well), safe=False)
 
 

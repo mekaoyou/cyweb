@@ -6,7 +6,7 @@ var DETAIL_COMMAND = "detail";
 var CATEGORY_COMMAND = "cate";
 var ARTICLE_COMMAND = "art";
 var ARTICLE_LIST_COMMAND = "arts";
-var WELLCOME_COMMAND = "wellcome";
+var WELLCOME_COMMAND = "welcome";
 
 function commandHandler(input_str)
 {
@@ -81,7 +81,7 @@ function handleWellComeResult(json)
 {
 	if(json[0] != null && json[0] != undefined)
 	{
-		return json[0].fields.wellcome;
+		return json[0].fields.welcome;
 	}
 	return "Well Come to Shell Blog!<br>Powered by Alex"
 }

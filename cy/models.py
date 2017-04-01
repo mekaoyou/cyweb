@@ -76,7 +76,7 @@ class Article(models.Model):
 class Welcome(models.Model):
     welcome = RichTextField(verbose_name=u'欢迎语')
     shell = models.CharField(max_length=32, verbose_name=u'等待输入')
-    title = models.CharField(max_length=32, verbose_name=u'网站标题', null=True)
+    title = models.CharField(max_length=32, verbose_name=u'网站标题', default=u'Shell Blog')
 
     def __unicode__(self):
         return u'%s' % self.shell
@@ -84,3 +84,21 @@ class Welcome(models.Model):
     class Meta:
         verbose_name = u'欢迎语'
         verbose_name_plural = u'欢迎语'
+
+
+class Help(models.Model):
+    name = models.CharField(max_length=12, verbose_name=u'命令名')
+    description = models.CharField(max_length=128, verbose_name=u'说明')
+    samples = models.CharField(max_length=128, verbose_name=u'例子', blank=True)
+    order = models.IntegerField(verbose_name=u'顺序', )
+    display = models.BooleanField(verbose_name=u'是否展示', default=True)
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
+    class Meta:
+        verbose_name = u'帮助'
+        verbose_name_plural = u'命令说明'
+        ordering = ['order']
+
+

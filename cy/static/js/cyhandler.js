@@ -3,13 +3,11 @@
 */
 var QUERY_COMMAND = "query";
 var DETAIL_COMMAND = "detail";
-<<<<<<< HEAD
-=======
 var CATEGORY_COMMAND = "cate";
 var ARTICLE_COMMAND = "art";
 var ARTICLE_LIST_COMMAND = "arts";
 var WELLCOME_COMMAND = "welcome";
->>>>>>> a7ae457852dd26bd0788e351cfdf1ce167d352c9
+var HELP_COMMAND = "help";
 
 function commandHandler(input_str)
 {
@@ -40,17 +38,13 @@ function commandHandler(input_str)
 
 function getURL(command)
 {
-	var commandArr = command.trim()
-							.replace(/&nbsp;+/g, " ")
-							.replace(/\s+/g," ")
-							.replace(/<br>+/g," ")
+	var commandArr = decodeURI(encodeURI(command.trim())
+							.replace(/(&nbsp;)+/g, "%20").trim()
+							.replace(/(<br>)+/g,"%20")
+							.replace(/(%20)+/g,"%20"))
 							.trim()
 							.split(" ");
-	if(commandArr.length > 1)
-	{
-		return "/"+commandArr.join("/")+"/";
-	}
-	return command.trim();
+	return "/"+commandArr.join("/")+"/";
 }
 
 function getCommand(url)
@@ -60,18 +54,13 @@ function getCommand(url)
 
 function switchCommand(command, data)
 {
-<<<<<<< HEAD
-=======
 	console.log(command);
->>>>>>> a7ae457852dd26bd0788e351cfdf1ce167d352c9
 	switch(command)
 	{
 		case QUERY_COMMAND:
 			return handleQueryResult(data);
 		case DETAIL_COMMAND:
 			return handleDetailResult(data);
-<<<<<<< HEAD
-=======
 		case CATEGORY_COMMAND:
 			return handleCateGoryResult(data);
 		case ARTICLE_COMMAND:
@@ -80,14 +69,26 @@ function switchCommand(command, data)
 			return handleArtsResult(data);
 		case WELLCOME_COMMAND:
 			return handleWellComeResult(data);
->>>>>>> a7ae457852dd26bd0788e351cfdf1ce167d352c9
+		case HELP_COMMAND:
+			return handleHelpResult(data);
 		default:
 			return "No such command!";
 	}
 }
 
-<<<<<<< HEAD
-=======
+function handleHelpResult(json)
+{
+	var help_html = "<table>";
+    $.each(json, function(index, obj){
+        //console.log(obj.fields.name);
+        help_html += "<tr><td>"+obj.fields.name+"&nbsp;&nbsp;&nbsp;</td>"
+        help_html += "<td>|&nbsp;&nbsp;&nbsp;"+obj.fields.description+"&nbsp;&nbsp;&nbsp;</td>"
+        help_html += "<td>|&nbsp;&nbsp;&nbsp;"+obj.fields.samples+"</td></tr>"
+    });
+    help_html += "</table>";
+    return help_html;
+}
+
 function handleWellComeResult(json)
 {
 	if(json[0] != null && json[0] != undefined)
@@ -141,11 +142,15 @@ function handleCateGoryResult(json)
 		if(obj.fields.name == undefined)
 		{
 			isBlog = 1
-			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td></tr>"
+			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+obj.fields.category+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+obj.fields.auth+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+new Date(obj.fields.date_time).Format("yyyy-MM-dd")+"</td></tr>"
 		}
 		else
 		{
-			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.name+"</td></tr>"
+			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.name+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+obj.fields.description+"</td></tr>"
 		}
 	});
 	catList_html += "</table>";
@@ -153,16 +158,12 @@ function handleCateGoryResult(json)
 	return catList_html;
 }
 
->>>>>>> a7ae457852dd26bd0788e351cfdf1ce167d352c9
 function handleQueryResult(json)
 {
 	var cyList_html = "<table>";
     $.each(json, function(index, obj){
-<<<<<<< HEAD
         console.log(obj.fields.name);
-=======
         //console.log(obj.fields.name);
->>>>>>> a7ae457852dd26bd0788e351cfdf1ce167d352c9
         cyList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.name+"</td></tr>"
     });
     cyList_html += "</table>";

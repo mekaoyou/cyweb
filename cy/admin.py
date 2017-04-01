@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import CY, Category, Article, Welcome
+from models import CY, Category, Article, Welcome, Help
 
 # Register your models here.
 
@@ -26,10 +26,17 @@ class ArticleAdmin(admin.ModelAdmin):
     list_per_page = 30
 
 
+class HelpAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'order', 'display')
+    ordering = ('order',)
+    list_per_page = 30
+
+
 admin.site.register(CY, CYAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Welcome)
+admin.site.register(Help, HelpAdmin)
 
 
 

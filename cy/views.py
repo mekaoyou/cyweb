@@ -4,7 +4,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse, Http404
 import logging
-from models import CY, Category, Article, Welcome
+from models import CY, Category, Article, Welcome, Help
 from django.core import serializers
 import time
 
@@ -70,7 +70,7 @@ def category(request):
 def blogs(request, cat_id):
     log.debug(u'blogs enter and cat id is %s', cat_id)
     blogs = Article.objects.filter(category=int(cat_id))
-    return JsonResponse(serializers.serialize("json", blogs), safe=False)
+    return JsonResponse(serializers.serialize("json", blogs, use_natural_foreign_keys=True), safe=False)
 
 
 def artList(request):
@@ -89,3 +89,10 @@ def artQuery(request, keywords):
     log.debug(u'the artQuery keywords is %s', keywords)
     arts = Article.objects.filter(title__contains=keywords)
     return JsonResponse(serializers.serialize("json", arts, use_natural_foreign_keys=True), safe=False)
+
+
+def help(request):
+    log.debug(u'the help enter')
+    helps = Help.objects.filter(display=True)
+    return JsonResponse(serializers.serialize("json", helps), safe=False)
+

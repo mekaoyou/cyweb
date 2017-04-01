@@ -25,12 +25,13 @@ SECRET_KEY = 'ev(xy@e+dl0scm55@x-@7fle_z*g34h#8trz7%rwv9u6b%emp&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -104,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans' #'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai' #'UTC'
 
 USE_I18N = True
 
@@ -114,11 +115,41 @@ USE_L10N = True
 
 USE_TZ = True
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+CKEDITOR_UPLOAD_PATH = "article_images"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = 'E:/pyworkspace/cyweb/static'
+
+CKEDITOR_MEDIA_PREFIX = "/site_media/media/ckeditor/"
+CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "site_media", "media/uploads").replace("\\", '/')
+CKEDITOR_UPLOAD_PREFIX = os.path.join(BASE_DIR, "/site_media/media/uploads").replace("/", "\\")
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'extraPlugins': "codesnippet",
+        'toolbar': (
+            ['div', 'Source', '-', 'Save', 'Preview', '-', 'Templates'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+            ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+            ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button',  'ImageButton', 'HiddenField'],
+            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'CodeSnippet', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['TextColor', 'BGColor'],
+            ['Maximize', 'ShowBlocks', '-', 'About'],
+            ),
+        'language': 'zh-cn',
+    }
+}
 
 LOGGING = {
     'version': 1,
@@ -152,7 +183,7 @@ LOGGING = {
         'file_handler': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'G:\pyWorkspace\cyweb\logs\cylogs.log',
+            'filename': os.path.join(BASE_DIR, "/logs/cylogs.log"),
             'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 5,
             'formatter': 'verbose',
@@ -170,7 +201,7 @@ LOGGING = {
             'propagate': True,
         },
         'cy.app': {
-            'handlers': ['file_handler', 'console'],
+            'handlers': ['console', 'file_handler'],
             'level': 'DEBUG',
             'propagate': True,
         },

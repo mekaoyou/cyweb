@@ -82,8 +82,8 @@ class Welcome(models.Model):
         return u'%s' % self.shell
 
     class Meta:
-        verbose_name = u'欢迎语'
-        verbose_name_plural = u'欢迎语'
+        verbose_name = u'配置'
+        verbose_name_plural = u'配置'
 
 
 class Help(models.Model):

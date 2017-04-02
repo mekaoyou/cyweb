@@ -18,8 +18,13 @@ def index(request):
     return render(request, 'cy/index.html', {'SHELL': well.shell, 'TITLE': well.title})
 
 
+def about(request):
+    well = Welcome.objects.filter(id=2)
+    return JsonResponse(serializers.serialize("json", well), safe=False)
+
+
 def welcome(request):
-    well = Welcome.objects.all()
+    well = Welcome.objects.filter(id=1)
     return JsonResponse(serializers.serialize("json", well), safe=False)
 
 

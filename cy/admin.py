@@ -32,10 +32,15 @@ class HelpAdmin(admin.ModelAdmin):
     list_per_page = 30
 
 
+class WelcomeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'shell')
+    ordering = ('id', )
+
+
 admin.site.register(CY, CYAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Welcome)
+admin.site.register(Welcome, WelcomeAdmin)
 admin.site.register(Help, HelpAdmin)
 
 

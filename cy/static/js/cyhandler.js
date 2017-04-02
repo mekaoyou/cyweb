@@ -7,6 +7,7 @@ var CATEGORY_COMMAND = "cate";
 var ARTICLE_COMMAND = "art";
 var ARTICLE_LIST_COMMAND = "arts";
 var WELLCOME_COMMAND = "welcome";
+var ABOUT_COMMAND = "about";
 var HELP_COMMAND = "help";
 
 function commandHandler(input_str)
@@ -71,9 +72,20 @@ function switchCommand(command, data)
 			return handleWellComeResult(data);
 		case HELP_COMMAND:
 			return handleHelpResult(data);
+		case ABOUT_COMMAND:
+			return handleAboutResult(data);
 		default:
 			return "No such command!";
 	}
+}
+
+function handleAboutResult(json)
+{
+	if(json[0] != null && json[0] != undefined)
+	{
+		return json[0].fields.welcome;
+	}
+	return "Based on Django"
 }
 
 function handleHelpResult(json)

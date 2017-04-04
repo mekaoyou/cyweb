@@ -64,6 +64,7 @@ class Article(models.Model):
     date_time = models.DateTimeField(auto_now_add=True, verbose_name=u'日期')
     auth = models.ForeignKey(Person, verbose_name=u'作者')
     content = RichTextField(verbose_name=u'正文')
+    display = models.BooleanField(verbose_name=u'展示', default=True)
 
     def __unicode__(self):
         return u'%s' % self.title

@@ -115,7 +115,10 @@ function handleArtsResult(json)
 	var artList_html = "<table>";
     $.each(json, function(index, obj){
         //console.log(obj.fields.name);
-        artList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td></tr>"
+        artList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td>"
+		artList_html += "<td>&nbsp;&nbsp;"+obj.fields.category+"</td>"
+		artList_html += "<td>&nbsp;&nbsp;"+obj.fields.auth+"</td>"
+		artList_html += "<td>&nbsp;&nbsp;"+new Date(obj.fields.date_time).Format("yyyy-MM-dd")+"</td></tr>"
     });
     artList_html += "</table>";
     artList_html += "<br>共检索到 " + json.length + " 条记录";

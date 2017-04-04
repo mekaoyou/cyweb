@@ -20,7 +20,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'category', 'title', 'auth', 'date_time')
+    list_display = ('id', 'category', 'title', 'auth', 'date_time', 'display')
     list_display_links = ('id', 'title',)
     ordering = ('id',)
     list_per_page = 30

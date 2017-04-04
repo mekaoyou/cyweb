@@ -20,30 +20,30 @@ def index(request):
 
 def about(request):
     well = Welcome.objects.filter(id=2)
-    return JsonResponse(serializers.serialize("json", well), safe=False)
+    return toJSON(well)
 
 
 def welcome(request):
     well = Welcome.objects.filter(id=1)
-    return JsonResponse(serializers.serialize("json", well), safe=False)
+    return toJSON(well)
 
 
 def query(request, keywords):
     log.debug(u'the query key words is -> %s', keywords)
     cys = CY.objects.filter(name__contains=keywords)
-    return JsonResponse(serializers.serialize("json", cys), safe=False)
+    return toJSON(cys)
 
 
 def detail(request, cyId):
     log.debug(u'the query id is -> %d', int(cyId))
     cy = CY.objects.filter(id=int(cyId))
-    return JsonResponse(serializers.serialize("json", cy), safe=False)
+    return toJSON(cy)
 
 
 def detailII(request, cyName):
     log.debug(u'the query id is -> %s', cyName)
     cy = CY.objects.filter(name=cyName)
-    return JsonResponse(serializers.serialize("json", cy), safe=False)
+    return toJSON(cy)
 
 
 def uploadImage(request):
@@ -69,35 +69,48 @@ def uploadImage(request):
 def category(request):
     log.debug(u'the category enter')
     cats = Category.objects.all()
-    return JsonResponse(serializers.serialize("json", cats), safe=False)
+    return toJSON(cats)
 
 
-def blogs(request, cat_id):
+def arts(request, cat_id):
     log.debug(u'blogs enter and cat id is %s', cat_id)
-    blogs = Article.objects.filter(category=int(cat_id))
-    return JsonResponse(serializers.serialize("json", blogs, use_natural_foreign_keys=True), safe=False)
+    cats = Category.objects.filter(parent=int(cat_id))
+    cate_ids = [cate.id for cate in cats]
+    cate_ids.append(int(cat_id))
+    arts = Article.objects.filter(category__in=cate_ids, display=True).order_by('-date_time', 'id')
+    return toJSON(arts)
 
 
 def artList(request):
     log.debug(u'the artList enter')
-    arts = Article.objects.all()
-    return JsonResponse(serializers.serialize("json", arts), safe=False)
+    arts = Article.objects.filter(display=True).order_by('-date_time', 'id')
+    return toJSON(arts)
 
 
 def art(request, art_id):
     log.debug(u'the art enter id is %s', art_id)
-    arts = Article.objects.filter(id=int(art_id))
-    return JsonResponse(serializers.serialize("json", arts, use_natural_foreign_keys=True), safe=False)
+    arts = Article.objects.filter(id=int(art_id), display=True)
+    return toJSON(arts)
+
+
+def artName(request, keywords):
+    log.debug(u'the art enter name is %s', keywords)
+    arts = Article.objects.filter(title=keywords, display=True)
+    return toJSON(arts)
 
 
 def artQuery(request, keywords):
     log.debug(u'the artQuery keywords is %s', keywords)
-    arts = Article.objects.filter(title__contains=keywords)
-    return JsonResponse(serializers.serialize("json", arts, use_natural_foreign_keys=True), safe=False)
+    arts = Article.objects.filter(title__contains=keywords, display=True).order_by('-date_time', 'id')
+    return toJSON(arts)
 
 
 def help(request):
     log.debug(u'the help enter')
-    helps = Help.objects.filter(display=True)
-    return JsonResponse(serializers.serialize("json", helps), safe=False)
+    helps = Help.objects.filter(display=True).order_by('order')
+    return toJSON(helps)
+
+
+def toJSON(arr):
+    return JsonResponse(serializers.serialize("json", arr, use_natural_foreign_keys=True), safe=False)
 

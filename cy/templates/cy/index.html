@@ -12,12 +12,32 @@
 <div id='stars'></div>
 <div id='stars2'></div>
 <div id='stars3'></div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 
 <script type="text/javascript">
 	var shell = "{{ SHELL }}";
 	function getShell()
 	{
 		return shell;
+	}
+
+	function sendAjax(url, command, successFuc)
+	{
+		var result = "";
+		$.ajax({
+			type:"get",
+			async:false,
+			url: url,
+			data:{},
+			dataType:"json",
+			success:function(data){
+				result = successFuc(command, $.parseJSON(data))
+			},
+			error:function(data){
+				console.log("get error -> " + data);
+			}
+		});
+		return result;
 	}
 </script>
 

@@ -18,8 +18,15 @@ function commandHandler(input_str)
 	var url = getURL(input_str);
 	var command = getCommand(url);
 
-	var result = "";
-	$.ajax({
+	var result = window.parent.sendAjax(url, command, switchCommand)
+
+	/*var result = "";
+	window.parent.sendAjax(
+		url, 
+		successFuc:function(data){
+			result = switchCommand(command, $.parseJSON(data));
+		});*/
+	/*$.ajax({
 		type:"get",
 		async:false,
 		url: url,
@@ -32,7 +39,7 @@ function commandHandler(input_str)
 			console.log("get error -> " + data);
 			result = "No such command!"
 		}
-	});
+	});*/
 
     return result;
 }

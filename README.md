@@ -1,10 +1,10 @@
 # cyweb
 
 
-#base on django, django-ckeditor, Pillow
+#base on django, django-ckeditor, simplejson
 
 django-ckeditor: https://github.com/django-ckeditor/django-ckeditor
-Pillow: pip install Pillow
+Pillow: pip install simplejson
 
 
 ------------------------------------------------

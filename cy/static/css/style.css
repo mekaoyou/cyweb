@@ -17,7 +17,7 @@ width: 100%;
   /*overflow: auto;*/ 
 } 
 
-#stars {
+/*#stars {
   width: 1px;
   height: 1px;
   background: transparent;
@@ -76,7 +76,7 @@ width: 100%;
   to {
     transform: translateY(-2000px);
   }
-}
+}*/
 
 #insidePage{
   width: 100%;

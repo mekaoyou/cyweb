@@ -6,7 +6,9 @@ var DETAIL_COMMAND = "detail";
 var CATEGORY_COMMAND = "cate";
 var ARTICLE_COMMAND = "art";
 var ARTICLE_LIST_COMMAND = "arts";
-var WELLCOME_COMMAND = "wellcome";
+var WELLCOME_COMMAND = "welcome";
+var ABOUT_COMMAND = "about";
+var HELP_COMMAND = "help";
 
 function commandHandler(input_str)
 {
@@ -16,8 +18,15 @@ function commandHandler(input_str)
 	var url = getURL(input_str);
 	var command = getCommand(url);
 
-	var result = "";
-	$.ajax({
+	var result = window.parent.sendAjax(url, command, switchCommand)
+
+	/*var result = "";
+	window.parent.sendAjax(
+		url, 
+		successFuc:function(data){
+			result = switchCommand(command, $.parseJSON(data));
+		});*/
+	/*$.ajax({
 		type:"get",
 		async:false,
 		url: url,
@@ -30,24 +39,20 @@ function commandHandler(input_str)
 			console.log("get error -> " + data);
 			result = "No such command!"
 		}
-	});
+	});*/
 
     return result;
 }
 
 function getURL(command)
 {
-	var commandArr = command.trim()
-							.replace(/&nbsp;+/g, " ")
-							.replace(/\s+/g," ")
-							.replace(/<br>+/g," ")
+	var commandArr = decodeURI(encodeURI(command.trim())
+							.replace(/(&nbsp;)+/g, "%20").trim()
+							.replace(/(<br>)+/g,"%20")
+							.replace(/(%20)+/g,"%20"))
 							.trim()
 							.split(" ");
-	if(commandArr.length > 1)
-	{
-		return "/"+commandArr.join("/")+"/";
-	}
-	return command.trim();
+	return "/"+commandArr.join("/")+"/";
 }
 
 function getCommand(url)
@@ -72,16 +77,42 @@ function switchCommand(command, data)
 			return handleArtsResult(data);
 		case WELLCOME_COMMAND:
 			return handleWellComeResult(data);
+		case HELP_COMMAND:
+			return handleHelpResult(data);
+		case ABOUT_COMMAND:
+			return handleAboutResult(data);
 		default:
 			return "No such command!";
 	}
+}
+
+function handleAboutResult(json)
+{
+	if(json[0] != null && json[0] != undefined)
+	{
+		return json[0].fields.welcome;
+	}
+	return "Based on Django"
+}
+
+function handleHelpResult(json)
+{
+	var help_html = "<table>";
+    $.each(json, function(index, obj){
+        //console.log(obj.fields.name);
+        help_html += "<tr><td>"+obj.fields.name+"&nbsp;&nbsp;&nbsp;</td>"
+        help_html += "<td>|&nbsp;&nbsp;&nbsp;"+obj.fields.description+"&nbsp;&nbsp;&nbsp;</td>"
+        help_html += "<td>|&nbsp;&nbsp;&nbsp;"+obj.fields.samples+"</td></tr>"
+    });
+    help_html += "</table>";
+    return help_html;
 }
 
 function handleWellComeResult(json)
 {
 	if(json[0] != null && json[0] != undefined)
 	{
-		return json[0].fields.wellcome;
+		return json[0].fields.welcome;
 	}
 	return "Well Come to Shell Blog!<br>Powered by Alex"
 }
@@ -91,7 +122,10 @@ function handleArtsResult(json)
 	var artList_html = "<table>";
     $.each(json, function(index, obj){
         //console.log(obj.fields.name);
-        artList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td></tr>"
+        artList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td>"
+		artList_html += "<td>&nbsp;&nbsp;"+obj.fields.category+"</td>"
+		artList_html += "<td>&nbsp;&nbsp;"+obj.fields.auth+"</td>"
+		artList_html += "<td>&nbsp;&nbsp;"+new Date(obj.fields.date_time).Format("yyyy-MM-dd")+"</td></tr>"
     });
     artList_html += "</table>";
     artList_html += "<br>共检索到 " + json.length + " 条记录";
@@ -130,11 +164,15 @@ function handleCateGoryResult(json)
 		if(obj.fields.name == undefined)
 		{
 			isBlog = 1
-			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td></tr>"
+			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.title+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+obj.fields.category+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+obj.fields.auth+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+new Date(obj.fields.date_time).Format("yyyy-MM-dd")+"</td></tr>"
 		}
 		else
 		{
-			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.name+"</td></tr>"
+			catList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.name+"</td>"
+			catList_html += "<td>&nbsp;&nbsp;"+obj.fields.description+"</td></tr>"
 		}
 	});
 	catList_html += "</table>";
@@ -146,6 +184,7 @@ function handleQueryResult(json)
 {
 	var cyList_html = "<table>";
     $.each(json, function(index, obj){
+        console.log(obj.fields.name);
         //console.log(obj.fields.name);
         cyList_html += "<tr><td>"+obj.pk+"&nbsp;&nbsp;</td><td>"+obj.fields.name+"</td></tr>"
     });
